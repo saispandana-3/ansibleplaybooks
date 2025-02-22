@@ -1,0 +1,19 @@
+---
+- name: installing httpd
+  hosts: web
+  become: yes
+  gather_facts: yes
+  tasks:
+     - name: using yum module
+       yum:
+         name: httpd
+         state: present
+     - name: copying
+       copy:
+         src: /root/index.html
+         dest: /var/www/html/index.html
+         remote_src: yes    
+     - name: managing services
+       service:
+           name: httpd
+           state: restarted
