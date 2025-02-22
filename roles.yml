@@ -1,0 +1,8 @@
+---
+- name: using roles in git
+  hosts: web
+  gather_facts: yes
+  become: yes
+  roles:
+     - apache
+     
